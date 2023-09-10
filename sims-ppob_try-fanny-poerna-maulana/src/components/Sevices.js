@@ -1,0 +1,36 @@
+import { Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Profile } from "../pages/Profile";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchServices } from "../store/ProfileSlice";
+
+export const Services = () => {
+  const banner = useSelector((state) => state.profile.services);
+  console.log("bagian services :", banner);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, [dispatch]);
+
+  const navigate = useNavigate();
+  return (
+    <div className="mt-4 text-center d-flex">
+      {banner?.map((banners, i) => (
+        <div key={i}>
+          <Image src={banners.service_icon} className="ms-2 me-2" />
+          <p
+            style={{ fontSize: "15px", cursor: "pointer" }}
+            onClick={() => navigate(`/profile-buy/${i}`)}
+          >
+            {banners.service_name}
+          </p>
+          <div className="d-none">
+            <Profile service={banners.service_icon} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
