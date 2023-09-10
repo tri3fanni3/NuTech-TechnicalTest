@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
-import { Rupiah } from "../config/FormatIdr";
+import { Rupiah } from "../config/Currency";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBalance, fetchProfile } from "../store/ProfileSlice";
 import profile from "../assets/Profile.png";
@@ -30,7 +30,13 @@ const ComponentProfile = () => {
               ? profile
               : profiles?.profile_image
           }
-          style={{ objectFit: "cover", margin: "10px", padding: "10px" }}
+          style={{
+            objectFit: "cover",
+            margin: "10px",
+            padding: "10px",
+            width: "100px",
+            height: "100px",
+          }}
         />
         <div>
           <p style={{ margin: 0, padding: 0 }}>Selamat Datang</p>
@@ -50,7 +56,7 @@ const ComponentProfile = () => {
           }}
         >
           <div className="text-light">
-            <p>saldo anda</p>
+            <p>Saldo anda</p>
             {showBalance ? (
               <h3>{Rupiah(balance)}</h3>
             ) : (
@@ -59,10 +65,10 @@ const ComponentProfile = () => {
               </h3>
             )}
             <p
-              style={{ cursor: "pointer", marginTop: "17px" }}
+              style={{ cursor: "pointer", marginTop: "40px" }}
               onClick={ToggleBalanceVisibility}
             >
-              {showBalance ? "sembunyikan saldo" : "lihat saldo"}
+              {showBalance ? "Tutup saldo" : "Lihat saldo"}
             </p>
           </div>
         </div>

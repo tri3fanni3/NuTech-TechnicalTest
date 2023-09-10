@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listTransactionAsync } from "../store/ProfileSlice";
-import { Rupiah } from "../config/FormatIdr";
+import { Rupiah } from "../config/Currency";
 import { Navigationbar } from "../components/Navbar";
-import ComponentProfile from "../components/ComponentProfile";
+import ComponentProfile from "../components/ProfileInfo";
 import { format, parseISO } from "date-fns";
 
 const ListTransaction = () => {
@@ -14,7 +14,8 @@ const ListTransaction = () => {
 
   useEffect(() => {
     dispatch(listTransactionAsync(offset));
-  }, [dispatch, offset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   const handleShowMore = () => {
     const newOffset = offset + 5;

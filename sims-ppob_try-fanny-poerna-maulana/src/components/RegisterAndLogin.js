@@ -1,12 +1,27 @@
-import {Container,Form,Image,Row,Col,InputGroup,FormControl,Button,Alert} from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Image,
+  Row,
+  Col,
+  InputGroup,
+  FormControl,
+  Button,
+  Alert,
+} from "react-bootstrap";
 import logo from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEye,faEyeSlash,faLock,faUser} from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faLock,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUserAsync, loginUserAsync} from "../store/Slice";
+import { registerUserAsync, loginUserAsync } from "../store/UserSlice";
 import { useNavigate } from "react-router-dom";
-import { setAuthToken } from "../config/api";
+import { setAuthToken } from "../config/Api";
 import Swal from "sweetalert2";
 
 export const FormRegister = () => {
@@ -23,7 +38,7 @@ export const FormRegister = () => {
 
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +51,7 @@ export const FormRegister = () => {
         text: "Konfirmasi password harus sama dengan password pertama",
         showConfirmButton: false,
         timer: 2000,
-      })
+      });
       return;
     }
     const formData = {
@@ -56,25 +71,22 @@ export const FormRegister = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Submitting login form...');
+    console.log("Submitting login form...");
     const formData = {
       email: email,
       password: password,
     };
-    dispatch(loginUserAsync(formData))
-    .then((action) => {
+    dispatch(loginUserAsync(formData)).then((action) => {
       if (loginUserAsync.fulfilled.match(action)) {
         const token = action.payload.data.token;
         console.log("ini token dari login :", action.payload.data.token);
-        setAuthToken(localStorage.setItem("authToken",token))
-        navigate('/home');
+        setAuthToken(localStorage.setItem("authToken", token));
+        navigate("/home");
       }
     });
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
-
-  
 
   return (
     <>
@@ -217,7 +229,7 @@ export const FormRegister = () => {
               {/* Render alert berdasarkan status */}
               {users.status === "success" ? (
                 <Alert variant="success" className="mt-3">
-                {users.message}
+                  {users.message}
                 </Alert>
               ) : users.status === "failed" ? (
                 <Alert variant="danger" className="mt-3">
@@ -294,11 +306,11 @@ export const FormRegister = () => {
               </Button>
               {users.status === "success" ? (
                 <Alert variant="success" className="mt-3">
-                {users.message}
+                  {users.message}
                 </Alert>
               ) : users.status === "failed" ? (
                 <Alert variant="danger" className="mt-3">
-                {users.error}
+                  {users.error}
                 </Alert>
               ) : null}
               <p className="mt-3">

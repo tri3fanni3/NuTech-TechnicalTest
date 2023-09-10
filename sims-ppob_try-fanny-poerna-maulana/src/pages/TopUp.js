@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Container, Form, InputGroup, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { TopUpMoney } from "../store/ProfileSlice";
-import { Rupiah } from "../config/FormatIdr";
+import { Rupiah } from "../config/Currency";
 import Swal from "sweetalert2";
 import { Navigationbar } from "../components/Navbar";
-import ComponentProfile from "../components/ComponentProfile";
+import ComponentProfile from "../components/ProfileInfo";
 
 const TopUp = () => {
   const dispatch = useDispatch();

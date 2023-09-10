@@ -9,7 +9,7 @@ import {
   editProfileAsync,
   editProfileImageAsync,
 } from "../store/ProfileSlice";
-import { setAuthToken } from "../config/api";
+import { setAuthToken } from "../config/Api";
 import { useNavigate } from "react-router-dom";
 import { Navigationbar } from "../components/Navbar";
 import Swal from "sweetalert2";
@@ -96,6 +96,7 @@ const ProfileEdit = () => {
               ? profile
               : profiles?.profile_image
           }
+          style={{ width: "150px", height: "150px", objectFit: "cover" }}
         />
         <label htmlFor="imageInput">
           <FontAwesomeIcon icon={faEdit} style={{ cursor: "pointer" }} />

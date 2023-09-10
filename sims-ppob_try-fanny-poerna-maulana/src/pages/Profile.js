@@ -14,12 +14,12 @@ import {
   fetchServices,
 } from "../store/ProfileSlice";
 import { useParams } from "react-router-dom";
-import { Rupiah } from "../config/FormatIdr";
+import { Rupiah } from "../config/Currency";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyCheckDollar } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { Navigationbar } from "../components/Navbar";
-import ComponentProfile from "../components/ComponentProfile";
+import ComponentProfile from "../components/ProfileInfo";
 
 export const Profile = () => {
   const dispatch = useDispatch();

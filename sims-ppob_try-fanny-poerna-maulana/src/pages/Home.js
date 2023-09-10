@@ -1,17 +1,15 @@
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Services } from "../components/Sevices";
 import { BannerHome } from "../components/Banner";
 import { Navigationbar } from "../components/Navbar";
-import ComponentProfile from "../components/ComponentProfile";
-import Footer from "../components/Footer";
+import ComponentProfile from "../components/ProfileInfo";
 
 export const HomePage = () => {
-
   return (
     <>
       <Navigationbar />
       <Container className="">
-        <ComponentProfile/>
+        <ComponentProfile />
         <div className="d-flex">
           <Services />
         </div>
@@ -19,10 +17,9 @@ export const HomePage = () => {
           Temukan promo menarik
         </p>
         <div className="mb-5">
-            <BannerHome/>
+          <BannerHome />
         </div>
       </Container>
-      <Footer/>
     </>
   );
 };

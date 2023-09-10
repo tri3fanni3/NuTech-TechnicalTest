@@ -16,10 +16,15 @@ export const Services = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="mt-4 text-center d-flex">
+    <div className="mt-4 text-center d-flex gap-2">
       {banner?.map((banners, i) => (
         <div key={i}>
-          <Image src={banners.service_icon} className="ms-2 me-2" />
+          <Image
+            src={banners.service_icon}
+            className="ms-2 me-2"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate(`/profile-buy/${i}`)}
+          />
           <p
             style={{ fontSize: "15px", cursor: "pointer" }}
             onClick={() => navigate(`/profile-buy/${i}`)}
